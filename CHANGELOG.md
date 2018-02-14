@@ -1,3 +1,12 @@
+0.0.3 (2018-02-14)
+==================
+
+Features
+--------
+
+- Add required libs and python versions in setup.py (fix-setup)
+
+
 0.0.2 (2018-02-14)
 ==================
 
