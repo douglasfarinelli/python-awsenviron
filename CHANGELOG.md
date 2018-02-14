@@ -1,3 +1,12 @@
+0.0.5 (2018-02-14)
+==================
+
+Features
+--------
+
+- Fix publish command in Makefile (fix-makefile)
+
+
 0.0.4 (2018-02-14)
 ==================
 
