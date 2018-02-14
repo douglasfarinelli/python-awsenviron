@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 
-__version__ = str('0.0.1')
-
 import os
+
 import boto3
+
+__version__ = str('0.0.1')
 
 
 def load_from_parameter_store(path, **config):
