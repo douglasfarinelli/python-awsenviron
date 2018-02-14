@@ -58,4 +58,4 @@ release-major: ## Create minor release
 
 publish:  ## Publish on pypi
 	@pipenv run python setup.py sdist bdist_wheel upload
-	@rm -fr build dist .egg requests.egg-info
+	@rm -fr build dist .egg awsenviron.egg-info
