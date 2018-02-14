@@ -1,3 +1,12 @@
+0.0.4 (2018-02-14)
+==================
+
+Features
+--------
+
+- Fix install_requires parameter in setup.py (fix-setup)
+
+
 0.0.3 (2018-02-14)
 ==================
 
