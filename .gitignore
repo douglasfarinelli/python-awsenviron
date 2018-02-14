@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+Pipfile.lock
 build/
 develop-eggs/
 dist/
@@ -99,3 +100,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.idea/
