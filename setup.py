@@ -21,6 +21,8 @@ setup(
     description='Load environ vars from AWS Parameter Store',
     long_description=read('README.md'),
     py_modules=['awsenviron'],
+    python_requires=['>=2.7'],
+    install_requires=['boto3'],
     platforms='any',
     classifiers=[
         'Intended Audience :: Developers',
