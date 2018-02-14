@@ -13,7 +13,7 @@ def read(fname):
 setup(
     name='awsenviron',
     license='MIT',
-    version='0.0.3',
+    version='0.0.4',
     url='https://github.com/douglasfarinelli/python-awsenviron',
     author='Douglas Farinelli',
     author_email='douglas.farinelli@gmail.com',
