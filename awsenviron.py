@@ -40,4 +40,4 @@ def load_from_parameter_store(path, **config):
 
     for p in parameters:
         key = p['Name'].replace(path, '')
-        os.environ[key] = p['Value']
+        os.environ[str(key)] = p['Value']
