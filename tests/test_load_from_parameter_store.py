@@ -16,17 +16,24 @@ class SSMStub:
 
     def __init__(self, response):
         self.response = response
+        self.stop_paginate = False
 
     def get_parameters_by_path(
         self,
         Path=None,
-        WithDecryption=None
+        WithDecryption=None,
+        NextToken=None
     ):
+        try:
+            if isinstance(self.response, Exception):
+                raise self.response
 
-        if isinstance(self.response, Exception):
-            raise self.response
+            if self.stop_paginate:
+                self.response.pop('NextToken')
 
-        return self.response
+            return self.response
+        finally:
+            self.stop_paginate = 'NextToken' in self.response
 
 
 def test_should_raises_runtime_error_on_request():

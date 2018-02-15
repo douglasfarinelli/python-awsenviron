@@ -20,24 +20,36 @@ def load_from_parameter_store(path, **config):
 
     ssm = boto3.client('ssm', **config)
 
-    try:
-        response = ssm.get_parameters_by_path(
-            Path=path,
-            WithDecryption=True
-        )
-    except Exception as error:
-        raise EnvironmentError(
-            'Failed load env from aws parameter store '
-            'with error: {error}'.format(error=error)
-        )
+    next_token = None
 
-    parameters = response.get('Parameters')
-    if not parameters:
-        raise EnvironmentError(
-            'Could not load env from AWS Parameter Store because there '
-            'are no keys to this path "{path}"'.format(path=path)
-        )
+    while True:
 
-    for p in parameters:
-        key = p['Name'].replace(path, '')
-        os.environ[str(key)] = p['Value']
+        try:
+            kwargs = dict(
+                Path=path,
+                WithDecryption=True
+            )
+            if next_token:
+                kwargs['NextToken'] = next_token
+            response = ssm.get_parameters_by_path(**kwargs)
+        except Exception as error:
+            raise EnvironmentError(
+                'Failed load env from aws parameter store '
+                'with error: {error}'.format(error=error)
+            )
+
+        parameters = response.get('Parameters')
+        if not parameters:
+            raise EnvironmentError(
+                'Could not load env from AWS Parameter Store because there '
+                'are no keys to this path "{path}"'.format(path=path)
+            )
+
+        for p in parameters:
+            key = p['Name'].replace(path, '')
+            os.environ[str(key)] = p['Value']
+
+        next_token = response.get(str('NextToken'))
+
+        if next_token is None:
+            break
