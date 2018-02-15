@@ -1,3 +1,12 @@
+0.0.7 (2018-02-15)
+==================
+
+Features
+--------
+
+- Implements pagination (implements-pagination)
+
+
 0.0.6 (2018-02-15)
 ==================
 
