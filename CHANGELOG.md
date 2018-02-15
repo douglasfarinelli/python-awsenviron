@@ -1,3 +1,13 @@
+0.0.6 (2018-02-15)
+==================
+
+Features
+--------
+
+- Fix os environ key like unicode. Must be string. (fix-key-like-unicode)
+- Improvements in README.md (improvements-in-readme)
+
+
 0.0.5 (2018-02-14)
 ==================
 
