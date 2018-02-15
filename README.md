@@ -6,10 +6,10 @@ python-awsenviron
 [![Coverage Status](https://coveralls.io/repos/github/douglasfarinelli/python-awsenviron/badge.svg?branch=master)](https://coveralls.io/github/douglasfarinelli/python-awsenviron?branch=master)
 [![PyPI version](https://badge.fury.io/py/awsenviron.svg)](https://pypi.python.org/pypi/awsenviron)
 
-The `awsenviron` environment variables from AWS Parameter Store according to the path configured.
+The `awsenviron` reads the key, value pair from [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html) and adds them to environment variable. This was inspired by [python-dotenv](https://github.com/theskumar/python-dotenv) and [12-factor](https://12factor.net/config) principles.
 
-How to install:
-===============
+Installation
+============
 
 ```bash
 pip install awsenviron
@@ -21,9 +21,23 @@ or
 pipenv install awsenviron
 ```
     
-How to use
-==========
+Usage
+=====
 
 ```python
 awsenviron.load_from_parameter_store(path='<your-path>')
 ```
+
+Now, you can access the variables either from system environment variable:
+
+```python
+import os
+
+DATABASE_URI = os.environ.get('DATABASE_URI')
+```
+
+Authentication
+==============
+
+awsenviron use `boto3` to authentication, [click here](http://boto3.readthedocs.io/en/latest/guide/configuration.html) to see the methods.
+
