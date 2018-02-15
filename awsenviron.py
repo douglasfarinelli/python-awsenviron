@@ -4,7 +4,7 @@ import os
 
 import boto3
 
-__version__ = str('0.0.6')
+__version__ = str('0.0.7')
 
 
 def load_from_parameter_store(path, **config):
