@@ -1,26 +1,21 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [dev-packages]
-
-"boto3" = "*"
-"flake8" = "==3.5.0"
+"flake8" = "==3.7.9"
 bumpversion = "==0.5.3"
-coveralls = "*"
-ipython = "==5.5.0"
-isort = "==4.2.15"
-pdbpp = "==0.9.2"
-pytest = "==3.3.1"
-pytest-cov = "==2.5.1"
-pytest-pythonpath = "==0.7.1"
-towncrier = "==17.8.0"
-mock = "*"
-
+coveralls = "==1.8.2"
+ipython = "==7.9.0"
+isort = "==4.3.21"
+pdbpp = "==0.10.2"
+pytest = "==5.2.2"
+pytest-cov = "==2.8.1"
+pytest-pythonpath = "==0.7.3"
+towncrier = "==19.2.0"
+mock = {version = "==3.0.5",markers = "python_version < '3'"}
+awsenviron = {path = "."}
 
 [packages]
-
 "boto3" = "*"
