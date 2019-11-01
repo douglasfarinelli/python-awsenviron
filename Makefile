@@ -41,20 +41,20 @@ tests: clean  ## Run tests
 release-draft: ## Show new release changelog
 	@pipenv run towncrier --draft
 
-release-patch: ## Create patch release
+ release-patch: ## Create patch release
+	@pipenv run bumpversion patch --dry-run --no-tag --no-commit --list | grep new_version= | sed -e 's/new_version=//' | xargs -n 1 pipenv run towncrier --yes --version
+	@git commit -am 'Update CHANGELOG'
 	@pipenv run bumpversion patch
-	@pipenv run towncrier --yes
-	@git commit -am 'Update CHANGELOG' && git push && git push --tags
 
-release-minor: ## Create minor release
+ release-minor: ## Create minor release
+	@pipenv run bumpversion minor --dry-run --no-tag --no-commit --list | grep new_version= | sed -e 's/new_version=//' | xargs -n 1 pipenv run towncrier --yes --version
+	@git commit -am 'Update CHANGELOG'
 	@pipenv run bumpversion minor
-	@pipenv run towncrier --yes
-	@git commit -am 'Update CHANGELOG' && git push && git push --tags
 
-release-major: ## Create minor release
+ release-major: ## Create major release
+	@pipenv run bumpversion major --dry-run --no-tag --no-commit --list | grep new_version= | sed -e 's/new_version=//' | xargs -n 1 pipenv run towncrier --yes --version
+	@git commit -am 'Update CHANGELOG'
 	@pipenv run bumpversion major
-	@pipenv run towncrier --yes
-	@git commit -am 'Update CHANGELOG' && git push && git push --tags
 
 publish:  ## Publish on pypi
 	@pipenv run python setup.py sdist bdist_wheel upload
